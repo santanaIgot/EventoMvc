@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Eventos</title>
 </head>
 <body>
-    <h1>Hello word</h1>
+    <h1>Events College</h1>
+    <div layout:fragment="conteudo">
+        <a th:href=""> Cadastro de eventos</a>
+    </div>
+
+
+
 </body>
 </html>
