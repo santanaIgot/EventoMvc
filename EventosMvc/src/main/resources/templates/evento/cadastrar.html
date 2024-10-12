@@ -5,36 +5,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cadastro de evento</title>
 </head>
 <body>
 
-<div class="container" layout:fragment="conteudo">
-    <form th:action="@{/evento/cadastrar}" th:object="${evento}" method="post">
-        <div class="mb-3">
-            <label class="form-label">Nome</label>
-            <input th:field="*{nome}" type="text" placeholder="Digite o Nome do evento">
-        </div>
+<div>
+    <h1>CADASTRO DE EVENTO</h1>
+    <div class="container" layout:fragment="conteudo">
+        <form th:action="@{/evento/cadastrar}" th:object="${evento}" method="post">
+            <div class="mb-3">
+                <label class="form-label">Nome</label>
+                <input th:field="*{nome}" type="text" placeholder="Digite o Nome do evento">
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">Descricao</label>
-            <input th:field="*{descricao}" type="text"  placeholder="Digite a descricao do evento">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Localizção</label>
-            <input th:field="*{localizacao}" type="text" placeholder="Digite o nome da atração">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Status do evento</label>
-            <input th:field="*{status}" type="text" placeholder="Digite o Nome do evento">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Status do evento</label>
-            <input th:field="*{data}" type="date"  placeholder="Digite o Nome do evento">
-        </div>
+            <div class="mb-3">
+                <label class="form-label">Descricao</label>
+                <input th:field="*{descricao}" type="text"  placeholder="Digite a descricao do evento">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Atração</label>
+                <input th:field="*{atracao}" type="text" placeholder="Digite a atração">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Localizção</label>
+                <input th:field="*{localizacao}" type="text" placeholder="Digite a localização">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Status do evento</label>
+                <input th:field="*{status}" type="text" placeholder="Digite o Nome do evento">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Status do evento</label>
+                <input th:field="*{data}" type="date"  placeholder="Digite o status do evento">
+            </div>
 
-        <input type="submit" value="Salvar">
-    </form>
+            <input type="submit" value="Salvar">
+        </form>
+
+    </div>
 
 </div>
 

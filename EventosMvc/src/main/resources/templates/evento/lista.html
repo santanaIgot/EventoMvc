@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Livros</title>
+</head>
+<body>
+
+<div class="container" layout:fragment="conteudo">
+    <div th:if="!${#strings.isEmpty(msg)}" class="alert alert-success">
+        <span th:text="${msg}"></span>
+    </div>
+    <h1>LISTA DE LIVROS</h1>
+    <table class="table">
+        <!-- Cabeçalho da tabela -->
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Atração</th>
+            <th>Localização</th>
+            <th>Status</th>
+            <th>Data</th>
+        </tr>
+        </thead>
+        <!-- Corpo da tabela -->
+        <tbody>
+        <!-- Loop para listar os eventos -->
+        <tr th:each="event : ${evento}">
+            <td th:text="${event.nome}"></td>
+            <td th:text="${event.descricao}"></td>
+            <td th:text="${event.atracao}"></td>
+            <td th:text="${event.localizacao}"></td>
+            <td th:text="${event.status}"></td>
+            <td th:text="${#temporals.format(event.data, 'dd/MM/yyyy')}"></td>
+
+            <td>
+                <a th:ref="@{/evento/editar/}+{event.id}" class="btn btn-outline-primary">Editar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

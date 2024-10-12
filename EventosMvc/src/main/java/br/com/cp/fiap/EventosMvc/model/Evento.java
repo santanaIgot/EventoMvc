@@ -1,15 +1,13 @@
 package br.com.cp.fiap.EventosMvc.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
+@Entity
 @Getter@Setter
 @Table(name = "TB_EVENTO_CP02_JAVA")
 public class Evento {
@@ -27,6 +25,8 @@ public class Evento {
     private String localizacao;
     @Column(name = "st_status", nullable = false)
     private Status status;
+
+    @DateTimeFormat(pattern = "dd/MM/yy")
     @Column(name = "dt_data")
     private LocalDate data;
 
