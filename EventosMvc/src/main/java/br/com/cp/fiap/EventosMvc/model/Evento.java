@@ -18,7 +18,6 @@ public class Evento {
 
     @Id
     @GeneratedValue
-    @NotNull
     private Long id;
 
     @NotBlank(message = "Preencha o nome do evento ")
@@ -26,7 +25,7 @@ public class Evento {
     @Column(name = "nm_nome", length = 50, nullable = false)
     private String nome;
 
-    @Size(min = 10 , max = 200)
+    @Size(min =  5, max = 200)
     @NotNull
     @Column(name = "ds_descricao", length = 50, nullable = false)
     private String descricao;
@@ -43,7 +42,7 @@ public class Evento {
     @Column(name = "st_status", nullable = false)
     private Status status;
 
-    @Past
+
     @NotNull
     @DateTimeFormat(pattern = "dd/MM/yy")
     @Column(name = "dt_data")

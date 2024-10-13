@@ -1,50 +1,69 @@
 <!DOCTYPE html>
-<html
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de evento</title>
+    <!-- Link do CSS do Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-<div>
-    <h1>CADASTRO DE EVENTO</h1>
-    <div class="container" layout:fragment="conteudo">
-        <form th:action="@{/evento/cadastrar}" th:object="${evento}" method="post">
-            <div class="mb-3">
-                <label class="form-label">Nome</label>
-                <input th:field="*{nome}" type="text" placeholder="Digite o Nome do evento">
-            </div>
+<div class="container mt-5" layout:fragment="conteudo">
+    <h1 class="text-center mb-4">Cadastro de Evento</h1>
 
-            <div class="mb-3">
-                <label class="form-label">Descricao</label>
-                <input th:field="*{descricao}" type="text"  placeholder="Digite a descricao do evento">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Atração</label>
-                <input th:field="*{atracao}" type="text" placeholder="Digite a atração">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Localizção</label>
-                <input th:field="*{localizacao}" type="text" placeholder="Digite a localização">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Status do evento</label>
-                <input th:field="*{status}" type="text" placeholder="Digite o Nome do evento">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Status do evento</label>
-                <input th:field="*{data}" type="date"  placeholder="Digite o status do evento">
-            </div>
-
-            <input type="submit" value="Salvar">
-        </form>
-
+    <div th:if="!${#strings.isEmpty(msg)}" class="alert alert-success text-center">
+        <span th:text="${msg}"></span>
     </div>
 
+    <div class="container" >
+        <form th:action="@{/evento/cadastrar}" th:object="${evento}" method="post">
+            <!-- Nome -->
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input th:field="*{nome}" type="text" class="form-control" id="nome" placeholder="Digite o nome do evento">
+            </div>
+
+            <!-- Descrição -->
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <input th:field="*{descricao}" type="text" class="form-control" id="descricao" placeholder="Digite a descrição do evento">
+            </div>
+
+
+            <div class="form-group">
+                <label for="atracao">Atração</label>
+                <input th:field="*{atracao}" type="text" class="form-control" id="atracao" placeholder="Digite a atração">
+            </div>
+
+
+            <div class="form-group">
+                <label for="localizacao">Localização</label>
+                <input th:field="*{localizacao}" type="text" class="form-control" id="localizacao" placeholder="Digite a localização">
+            </div>
+
+
+            <div class="form-group">
+                <label for="status">Status do evento</label>
+                <input th:field="*{status}" type="text" class="form-control" id="status" placeholder="Digite o status do evento">
+            </div>
+
+            <!-- Data -->
+            <div class="form-group">
+                <label for="data">Data do evento</label>
+                <input th:field="*{data}" type="date" class="form-control" id="data" placeholder="Selecione a data do evento">
+            </div>
+
+
+            <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+        </form>
+    </div>
 </div>
 
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

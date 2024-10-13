@@ -32,13 +32,15 @@ public class EventoController {
 
     @PostMapping("cadastrar")
     @Transactional
-    public String cadastrar(Evento evento, Model model){
-            eventoRepository.save(evento);
-            model.addAttribute("evento",evento );
-            model.addAttribute("msg", "Cadastrado com sucesso!");
+    public String cadastrar(@Valid Evento evento, Model model,
+                            RedirectAttributes redirectAttributes){
+
+        eventoRepository.save(evento);
+        redirectAttributes.addFlashAttribute("msg", "evento registrado!");
+        return "redirect:/evento/cadastrar";
 
 
-        return "evento/sucesso";
+
     }
 
     @GetMapping("lista")
