@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar evento</title>
+</head>
+<body>
+<div class="container"  layout:fragment="conteudo">
+    <h1>Editar livro</h1>
+    <form th:action="@{/evento/editar}" method="post" th:object="${evento}">
+        <input hidden="hidden" th:field="*{id}">
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+            <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">nome</label>
+            <input type="text" th:field="*{nome}" class="form-control">
+            <p th:if="${#fields.hasErrors('nome')}" class="text text-danger"
+               th:errors="*{nome}"></p>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descrição</label>
+            <textarea th:field="*{descricao}" class="form-control"></textarea>
+            <p th:if="${#fields.hasErrors('descricao')}" class="text text-danger"
+               th:errors="*{descricao}"></p>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Atração</label>
+            <input type="text" class="form-control" th:field="*{atracao}">
+            <p th:if="${#fields.hasErrors('atracao')}" class="text text-danger"
+               th:errors="*{atracao}"></p>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">localizacao</label>
+            <input class="form-control" type="text" th:field="*{localizacao}">
+            <p th:if="${#fields.hasErrors('localizacao')}" class="text text-danger"
+               th:errors="*{localizacao}"></p>
+        </div>
+   
+        <div class="mb-3">
+            <label class="form-label">Data Publicação</label>
+            <input type="date" class="form-control" th:field="*{data}">
+            <p th:if="${#fields.hasErrors('data')}" class="text text-danger"
+               th:errors="*{data}"></p>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">status</label>
+            <input type="text" th:field="*{status}" class="form-control">
+            <p th:if="${#fields.hasErrors('status')}" class="text text-danger"
+               th:errors="*{status}"></p>
+        </div>
+
+
+
+        <button class="btn btn-success">Editar</button>
+    </form>
+</div>
+</body>
+</html>
