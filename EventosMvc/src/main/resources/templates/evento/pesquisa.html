@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pesquisa de eventos</title>
+</head>
+<body>
+<h1>Pesquisar evento</h1>
+
+<form th:action="@{/evento/pesquisa}" method="get">
+  <input type="text" name="nome" placeholder="Digite o nome do evento" required />
+  <button type="submit">Pesquisar</button>
+</form>
+
+<h2>Resultados</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Descricao</th>
+    <th>Atração</th>
+    <th>Status</th>
+    <th>Localização</th>
+    <th>Data</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="evento : ${resultados}">
+    <td th:text="${evento.nome}">Nome</td>
+    <td th:text="${evento.descricao}">Descricao</td>
+    <td th:text="${evento.atracao}">Atracao</td>
+    <td th:text="${evento.localizacao}">Localizacao</td>
+    <td th:text="${evento.data}">Data do evento</td>
+    <td th:text="${evento.status}">STatus</td>
+    <td>
+      <a th:href="@{/evento/editar/{id}(id=${evento.id})}">Editar</a>
+      <form th:action="@{/evento/excluir/{id}(id=${evento.id})}" method="post" onsubmit="return confirm('Tem certeza que deseja remover?');" style="display:inline;">
+        <button type="submit">Deletar</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<a th:href="@{/evento/lista}">Voltar à lista</a>
+</body>
+</html>
